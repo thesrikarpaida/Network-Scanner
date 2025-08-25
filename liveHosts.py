@@ -7,9 +7,20 @@ An ICMP ping request is sent to each host in the provided subnet for checking if
 
 '''
 
-import sys
+import os
 from netaddr import IPNetwork
 from scapy.all import sr1, IP, ICMP
+
+from threading import Lock
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+
+
+def pingHost(host):
+    response = sr1(IP(dst=str(host))/ICMP(), timeout=2, verbose=False)
+    if response is not None:
+        return str(host)
+    return None
 
 
 def pingSweep(subnet, mask):
@@ -26,14 +37,23 @@ def pingSweep(subnet, mask):
     for host in network.iter_hosts():
         possibleHosts += 1
     
-    for host in network.iter_hosts():
-        scannedHosts += 1
-        print(f"Scanning: {scannedHosts}/{possibleHosts} hosts...", end="\r")
+    threads = os.cpu_count()
+    lock = Lock()
+    
+    with ThreadPoolExecutor(max_workers=threads) as executor:
+        futures = []
+        for host in network.iter_hosts():
+            future = executor.submit(pingHost, host)
+            futures.append(future)
         
-        response = sr1(IP(dst=str(host))/ICMP(), timeout=1, verbose=0)
-        if response is not None:
-            liveHosts.append(str(host))
-            print(f"Host {host} is online.")
+        for future in as_completed(futures):
+            scannedHosts += 1
+            result = future.result()
+            with lock:
+                print(f"Scanning {scannedHosts} / {possibleHosts}", end="\r")
+                if result is not None:
+                    print(f"Host {result} is live.")
+                    liveHosts.append(str(result))
     
     return liveHosts
 
@@ -42,7 +62,7 @@ def pingSweep(subnet, mask):
 
 if __name__ == "__main__":
 
-    subnet = "10.173.154.95"
+    subnet = "192.168.128.132"
     mask = "24"
     liveHosts = pingSweep(subnet, mask)
 
