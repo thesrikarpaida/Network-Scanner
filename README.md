@@ -7,8 +7,11 @@ This is a network scanner written in Python that provides a list of live hosts a
 
 ```
 git clone https://github.com/thesrikarpaida/Network-Scanner.git 
+
 cd Network-Scanner
+
 chmod +x install.sh
+
 ./install.sh
 ```
 
