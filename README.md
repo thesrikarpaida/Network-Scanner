@@ -19,3 +19,11 @@ The final program is currently in `portScanner.py`. It will accept a subnet and 
 
 This is designed for Linux environments, so the `install.sh` file can be run in Linux operating systems before executing the network scanner. It includes all the software and libraries required for running this without errors.
 
+
+---
+---
+---
+
+
+_***This project is still a work in progress. I'm trying to involve service fingerprinting as well as make the code more readable and capable of giving more details based on the scan._
+
