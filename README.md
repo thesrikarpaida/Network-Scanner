@@ -21,8 +21,6 @@ This is designed for Linux environments, so the `install.sh` file can be run in 
 
 
 
-###
-
 
 ---
 This project is still a work in progress. I'm trying to involve service fingerprinting as well as make the code more readable and capable of giving more details based on the scan.
