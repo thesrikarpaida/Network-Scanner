@@ -55,7 +55,7 @@ def portScanner(host, ports):
 def getOpenPortsInNetwork(subnet, mask):
 
     getLiveHosts = liveHosts.pingSweep(subnet, mask)
-    # getLiveHosts = ["192.168.128.0"]
+    # getLiveHosts = ["192.168.1.0"]
 
     openPorts = {}
     ports = range(1, 1001)
@@ -69,7 +69,7 @@ def getOpenPortsInNetwork(subnet, mask):
 
 if __name__ == "__main__":
 
-    subnet = "192.168.128.0"
+    subnet = "192.168.1.0"
     mask = "24"
     openPortsList = getOpenPortsInNetwork(subnet, mask)
 

@@ -62,7 +62,7 @@ def pingSweep(subnet, mask):
 
 if __name__ == "__main__":
 
-    subnet = "192.168.128.0"
+    subnet = "192.168.1.0"
     mask = "24"
     liveHosts = pingSweep(subnet, mask)
 
