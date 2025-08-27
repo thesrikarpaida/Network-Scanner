@@ -1,6 +1,6 @@
 # Network Scanner in Python
 
-This is a network scanner written in Python that provides a list of live hosts and their open ports if provided with a subnet and a mask.
+This is a network scanner written in Python that provides a list of live hosts and their open ports if provided with a subnet and a mask. Each port runs on a service, so this program can also do a service scan on the open ports after detecting those open ports on each of those live hosts.
 
 
 ### Install
@@ -25,5 +25,5 @@ This is designed for Linux environments, so the `install.sh` file can be run in 
 ---
 
 
-_***This project is still a work in progress. I'm trying to involve service fingerprinting as well as make the code more readable and capable of giving more details based on the scan._
+_***This project is still a work in progress. I'm trying to add OS fingerprinting as well as make the code more readable and capable of giving more details based on the scan._
 
