@@ -25,5 +25,5 @@ This is designed for Linux environments, so the `install.sh` file can be run in 
 ---
 
 
-_***This project is still a work in progress. I'm trying to add OS fingerprinting as well as make the code more readable and capable of giving more details based on the scan._
+_***This project is still a work in progress. I'm trying to add OS fingerprinting as well as more structure to the code if possible._
 
